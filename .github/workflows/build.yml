@@ -1,3 +1,4 @@
+
 name: Build Xvideos
 
 on:
@@ -31,8 +32,11 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Show Gradle Projects
+        run: ./gradlew projects --no-daemon
+
       - name: Build Xvideos
-        run: ./gradlew :extensions:individual:all:xvideos:assembleRelease --no-daemon
+        run: ./gradlew :src:all:xvideos:assembleRelease --no-daemon
 
       - name: Find APKs
         run: |
