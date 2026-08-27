@@ -108,9 +108,9 @@ class Xvideos : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
     }
 
     override fun searchAnimeRequest(page: Int, query: String, filters: AnimeFilterList): Request {
-        val tagFilter = filters.find{it is Tags} as Tags
+        val tagFilter = filters.find { it is Tags } as Tags
         return when {
-            query.isNotBlank() -> GET("$baseUrl/?k=$query&p=$page", headers)
+            query.isNotBlank() -> GET("$baseUrl/?k=$query&p=$page&sort=views", headers)
             tagFilter.state.isNotBlank() -> GET("$baseUrl/tags/${tagFilter.state}/$page ")
             else -> GET("$baseUrl/new/$page", headers)
         }
