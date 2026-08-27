@@ -35,9 +35,10 @@ jobs:
       - name: Show Gradle Projects
         run: ./gradlew projects --no-daemon
 
-      - name: Build Xvideos
-        run: ./gradlew :src:all:xvideos:assembleRelease --no-daemon
-
+- name: Build Xvideos
+        env:
+          CI_MATRIX_LANG: all
+        run: ./gradlew :extensions:individual:all:xvideos:assembleRelease --no-daemon
       - name: Find APKs
         run: |
           echo "Searching for APK files..."
